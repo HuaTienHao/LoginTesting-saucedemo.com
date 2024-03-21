@@ -21,11 +21,17 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://www.saucedemo.com/')
 
-WebUI.setText(findTestObject('Page_Swag Labs/input_user-name'), '')
+WebUI.setText(findTestObject('Page_Swag Labs/input_user-name'), Username)
 
-WebUI.setText(findTestObject('Page_Swag Labs/input_password'), '')
+WebUI.setText(findTestObject('Page_Swag Labs/input_password'), Password)
 
 WebUI.click(findTestObject('Page_Swag Labs/login-button'))
 
-WebUI.verifyElementText(findTestObject('Page_Swag Labs/ErrorMsg'), '')
+if (WebUI.verifyElementPresent(findTestObject('Page_Swag Labs/ErrorMsg'), 0, FailureHandling.OPTIONAL)) {
+    WebUI.verifyElementText(findTestObject('Page_Swag Labs/ErrorMsg'), ErrorMsg)
+}
+
+WebUI.delay(2)
+
+WebUI.closeBrowser()
 
